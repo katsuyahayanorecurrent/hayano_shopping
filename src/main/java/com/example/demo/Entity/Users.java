@@ -58,6 +58,12 @@ public class Users {
 		this.password = password;
 	}
 
+	public Users(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.Entity.Items;
 import com.example.demo.Entity.Users;
 import com.example.demo.Repository.ItemsRepository;
 import com.example.demo.Repository.UsersRepository;
@@ -57,6 +60,7 @@ public class AccountController {
 			Users user = new Users(address, email, tell, name, password);
 			usersRepository.saveAndFlush(user);
 
+			// ログイン画面に遷移
 			mv.setViewName("login");
 		}
 		return mv;
@@ -73,7 +77,24 @@ public class AccountController {
 
 			// 登録画面を再表示
 			mv.setViewName("login");
+			return mv;
+		}
+
+		List<Users> userList = usersRepository.findByEmailAndPassword(email, password);
+
+		// 不一致時
+		if (userList.size() == 0) {
+			mv.addObject("message", "アカウントが存在しません");
+
+			// 登録画面を再表示
+			mv.setViewName("login");
+
+			// 入力情報がデータベースと一致時
 		} else {
+			List<Items> itemList = itemsRepository.findAll();
+			mv.addObject("items", itemList);
+
+			// 検索画面に遷移
 			mv.setViewName("item");
 		}
 		return mv;
