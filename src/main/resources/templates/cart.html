@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>カート</title>
+</head>
+<body>
+	<table border="1">
+		<!-- タイトル -->
+		<tr>
+			<th>商品名</th>
+			<th>値段</th>
+			<th>個数</th>
+			<th>小計</th>
+			<th></th>
+		</tr>
+
+		<!-- アイテムの一覧 -->
+		<tr th:each="items:${items}">
+			<td th:text="${items.value.name}"></td>
+			<td th:text="${items.value.price}"></td>
+			<td th:text="${items.value.quantity}"></td>
+			<td th:text="${items.value.price * items.value.quantity}"></td>
+			<td><a th:href="|/cart/delete/${items.value.id}|"><button>削除</button></a></td>
+		</tr>
+
+		<!-- 総計 -->
+		<tr>
+			<td colspan="5" align="right" th:text="|総計:${total}|"></td>
+		</tr>
+	</table>
+
+	<a href="/order">
+		<button>購入する</button>
+	</a>
+
+</body>
+</html>

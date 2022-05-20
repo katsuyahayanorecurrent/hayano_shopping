@@ -6,16 +6,20 @@
 </head>
 <body>
 	<a href="/">ログアウト</a>
+	<a href="/cart"> カートを見る </a>
 	<form action="/searchItem" method="post">
 		<input type="text" name="search"> <input type="submit"
 			value="検索" />
 	</form>
 
-	<table border = "1">
+	<table border="1">
 		<tr th:each="items:${items}">
 			<td th:text="${items.stock}"></td>
 			<td th:text="${items.name}"></td>
 			<td th:text="${items.price}"></td>
+			<td><a th:href="|/cart/add/${items.id}|">
+					<button>カートに追加</button>
+			</a></td>
 		</tr>
 	</table>
 

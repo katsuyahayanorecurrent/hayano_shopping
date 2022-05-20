@@ -4,28 +4,32 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name="items")
+@Table(name = "items")
 public class Items {
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name="price")
+
+	@Column(name = "price")
 	private Integer price;
 
-	@Column(name="stock")
+	@Column(name = "stock")
 	private Integer stock;
-	
-	@Column(name="image")
+
+	@Column(name = "image")
 	private String image;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="delivery_days")
+
+	@Column(name = "delivery_days")
 	private Integer delivery_days;
+
+	@Transient
+	private Integer quantity;
 
 	public Integer getId() {
 		return id;
@@ -49,6 +53,14 @@ public class Items {
 
 	public Integer getDelivery_days() {
 		return delivery_days;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 }
