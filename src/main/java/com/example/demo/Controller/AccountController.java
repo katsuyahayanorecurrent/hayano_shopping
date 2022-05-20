@@ -31,6 +31,7 @@ public class AccountController {
 	// ログイン画面遷移
 	@RequestMapping("/")
 	public String login() {
+		session.invalidate();
 		return "login";
 	}
 
@@ -93,6 +94,9 @@ public class AccountController {
 		} else {
 			List<Items> itemList = itemsRepository.findAll();
 			mv.addObject("items", itemList);
+			
+			Users user = userList.get(0);
+			session.setAttribute("userInfo", user);
 
 			// 検索画面に遷移
 			mv.setViewName("item");
