@@ -15,24 +15,38 @@ public class OrderController {
 
 	@Autowired
 	HttpSession session;
-	
+
 	@Autowired
 	UsersRepository usersRepository;
 
 	@RequestMapping("/order")
 	public ModelAndView order(ModelAndView mv) {
-		Cart cart =getCartFromSession();
-				
-		// ページに表示したい情報を設定
-				mv.addObject("items", cart.getItems());
-				mv.addObject("total", cart.getTotal());
-				mv.addObject("userInfo", session.getAttribute("userInfo"));
+		Cart cart = getCartFromSession();
 
-				// カートの中身を表示するページに遷移
-				mv.setViewName("order");
-				return mv;
+		// ページに表示したい情報を設定
+		mv.addObject("items", cart.getItems());
+		mv.addObject("total", cart.getTotal());
+		mv.addObject("userInfo", session.getAttribute("userInfo"));
+
+		// カートの中身を表示するページに遷移
+		mv.setViewName("order");
+		return mv;
 	}
 
+	@RequestMapping("/ordered")
+	public ModelAndView ordered(ModelAndView mv) {
+		Cart cart = getCartFromSession();
+		
+		// ページに表示したい情報を設定
+		mv.addObject("items", cart.getItems());
+		mv.addObject("total", cart.getTotal());
+		mv.addObject("userInfo", session.getAttribute("userInfo"));
+		
+		// カートの中身を表示するページに遷移
+		mv.setViewName("ordered");
+		return mv;
+	}
+	
 	private Cart getCartFromSession() {
 		Cart cart = (Cart) session.getAttribute("cart");
 		if (cart == null) {
@@ -41,5 +55,6 @@ public class OrderController {
 		}
 		return cart;
 	}
+
 
 }

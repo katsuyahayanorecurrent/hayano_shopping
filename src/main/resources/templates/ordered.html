@@ -2,9 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>注文</title>
+<title>Insert title here</title>
 </head>
 <body>
+	<h1>ご注文ありがとうございました</h1>
+
+	<hr>
+
+	<h2>ご注文の商品</h2>
 	<table border="1">
 		<!-- タイトル -->
 		<tr>
@@ -12,7 +17,6 @@
 			<th>値段</th>
 			<th>個数</th>
 			<th>小計</th>
-			<th></th>
 		</tr>
 
 		<!-- アイテムの一覧 -->
@@ -21,7 +25,6 @@
 			<td th:text="${items.value.price}"></td>
 			<td th:text="${items.value.quantity}"></td>
 			<td th:text="${items.value.price * items.value.quantity}"></td>
-			<td><a th:href="|/cart/delete/${items.value.id}|"><button>削除</button></a></td>
 		</tr>
 
 		<!-- 総計 -->
@@ -30,28 +33,25 @@
 		</tr>
 	</table>
 
-		<table>
-			<tr>
-				<td>お名前</td>
-				<td th:text="${userInfo.name}"></td>
-			</tr>
-			<tr>
-				<td>お届け先</td>
-				<td th:text="${userInfo.address}"></td>
-			</tr>
-			<tr>
-				<td>電話番号</td>
-				<td th:text="${userInfo.tell}"></td>
-			</tr>
-			<tr>
-				<td>e-mail</td>
-				<td th:text="${userInfo.email}"></td>
-			</tr>
-		</table>
-
-	<form action="/ordered" method="post">
-		<input type="submit" value="購入">
-	</form>
+	<h2>お客様情報</h2>
+	<table>
+		<tr>
+			<td>お名前</td>
+			<td th:text="${userInfo.name}"></td>
+		</tr>
+		<tr>
+			<td>お届け先</td>
+			<td th:text="${userInfo.address}"></td>
+		</tr>
+		<tr>
+			<td>電話番号</td>
+			<td th:text="${userInfo.tell}"></td>
+		</tr>
+		<tr>
+			<td>e-mail</td>
+			<td th:text="${userInfo.email}"></td>
+		</tr>
+	</table>
 
 </body>
 </html>
