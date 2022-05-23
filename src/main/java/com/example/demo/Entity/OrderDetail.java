@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ordered_detail")
+@Table(name="order_detail")
 public class OrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +23,13 @@ public class OrderDetail {
 	
 	@Column(name="quantity")
 	private Integer quantity;
+
+	public OrderDetail(Integer ordered_id, Integer item_id, Integer quantity) {
+		super();
+		this.ordered_id = ordered_id;
+		this.item_id = item_id;
+		this.quantity = quantity;
+	}
 
 	public Integer getId() {
 		return id;

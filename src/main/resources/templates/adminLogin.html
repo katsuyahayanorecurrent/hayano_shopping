@@ -2,24 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>ログイン</title>
+<title>管理者ログイン</title>
 </head>
 <body>
-	<h1>ログイン</h1>
+	<h1>管理者ログイン</h1>
 
 	<!-- エラーメッセージ -->
 	<span th:text="${message}" style="color: red;"></span>
 
 	<!-- ログインフォーム -->
-	<form action="/login" method="post">
+	<form action="/adminLogin" method="post">
 
 		<input type="text" name="email" placeholder="メールアドレス" /> <br> <input
 			type="text" name="password" placeholder="パスワード" /> <br> <input
 			type="submit" value="ログイン" />
 	</form>
-
-	<a href="/signup">新規登録</a>
-	<a href="/adminLogin">管理者</a>
-
 </body>
 </html>

@@ -129,7 +129,6 @@ public class AccountController {
 	public ModelAndView itemAdd(@RequestParam("name") String name, @RequestParam("address") String address,
 			@RequestParam("tell") String tell, @RequestParam("email") String email,
 			@RequestParam("password") String password, ModelAndView mv) {
-		mv.setViewName("itemAdd");
 
 		// 未入力チェック
 		if (name == null || name.length() == 0 || address == null || address.length() == 0 || tell == null

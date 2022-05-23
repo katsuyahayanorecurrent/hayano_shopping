@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.Entity.Cart;
+import com.example.demo.Entity.Items;
+import com.example.demo.Entity.Order;
+import com.example.demo.Entity.OrderDetail;
+import com.example.demo.Entity.Users;
+import com.example.demo.Repository.OrderDetailRepository;
+import com.example.demo.Repository.OrderedRepository;
 import com.example.demo.Repository.UsersRepository;
 
 @Controller
@@ -18,6 +26,12 @@ public class OrderController {
 
 	@Autowired
 	UsersRepository usersRepository;
+	
+	@Autowired
+	OrderedRepository orderedRepository;
+	
+	@Autowired
+	OrderDetailRepository orderDetailRepository;
 
 	@RequestMapping("/order")
 	public ModelAndView order(ModelAndView mv) {
@@ -36,6 +50,20 @@ public class OrderController {
 	@RequestMapping("/ordered")
 	public ModelAndView ordered(ModelAndView mv) {
 		Cart cart = getCartFromSession();
+		
+		// セッションからid取得
+					Users userInfo = (Users) session.getAttribute("userInfo");
+					Integer id = userInfo.getId();
+		
+		// オーダー情報の登録：Orderへの登録
+				Order ordered = new Order(id, new Date(), cart.getTotal());
+				int order_id = orderedRepository.saveAndFlush(ordered).getId();
+				
+				// オーダー詳細情報の登録：OrderDetailへの登録
+				for (Items item : cart.getItems().values()) {
+					OrderDetail orderDetail = new OrderDetail(order_id, item.getId(), item.getQuantity());
+					orderDetailRepository.saveAndFlush(orderDetail);
+				}
 
 		// ページに表示したい情報を設定
 		mv.addObject("items", cart.getItems());
