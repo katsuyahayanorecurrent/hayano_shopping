@@ -149,11 +149,8 @@ public class AccountController {
 			Users users = new Users(id, address, email, tell, name, password);
 			usersRepository.saveAndFlush(users);
 
-			// セッション情報をリセットし、再取得する
-			session.invalidate();
-			List<Users> userList = usersRepository.findByEmailAndPassword(email, password);
-			Users user = userList.get(0);
-			session.setAttribute("userInfo", user);
+			// セッション情報を再取得する
+			session.setAttribute("userInfo", users);
 			mv.addObject("userInfo", session.getAttribute("userInfo"));
 			mv.setViewName("mypage");
 		}
@@ -162,7 +159,7 @@ public class AccountController {
 
 	@RequestMapping("/logout")
 	public String logout() {
-
+		
 		// ログアウト独特の処理も追記可能
 		return login();
 	}

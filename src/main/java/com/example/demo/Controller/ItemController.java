@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +40,14 @@ public class ItemController {
 		mv.addObject("items", itemList);
 
 		mv.setViewName("item");
+		return mv;
+	}
+
+	// 商品詳細表示
+	@RequestMapping("/itemDetail/{id}")
+	public ModelAndView itemDetail(@PathVariable(name = "id") int id, ModelAndView mv) {
+		mv.addObject("items", itemsRepository.findById(id).get());
+		mv.setViewName("itemDetail");
 		return mv;
 	}
 

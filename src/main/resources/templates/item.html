@@ -15,9 +15,13 @@
 
 	<table border="1">
 		<tr th:each="items:${items}">
+			<td><img th:src="|/${items.image}|" /></td>
 			<td th:text="${items.stock}"></td>
 			<td th:text="${items.name}"></td>
 			<td th:text="${items.price}"></td>
+			<td><a th:href="|/itemDetail/${items.id}|">
+					<button>商品詳細</button>
+			</a></td>
 			<td><a th:href="|/cart/add/${items.id}|">
 					<button>カートに追加</button>
 			</a></td>

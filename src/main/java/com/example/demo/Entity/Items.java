@@ -28,6 +28,22 @@ public class Items {
 	@Column(name = "delivery_days")
 	private Integer delivery_days;
 
+	public Items() {
+		super();
+	}
+
+	public Items(Integer id, Integer price, Integer stock, String image, String name, Integer delivery_days,
+			Integer quantity) {
+		super();
+		this.id = id;
+		this.price = price;
+		this.stock = stock;
+		this.image = image;
+		this.name = name;
+		this.delivery_days = delivery_days;
+		this.quantity = quantity;
+	}
+
 	@Transient
 	private Integer quantity;
 
