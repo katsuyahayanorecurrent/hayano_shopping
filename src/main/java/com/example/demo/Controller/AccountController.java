@@ -94,7 +94,7 @@ public class AccountController {
 		} else {
 			List<Items> itemList = itemsRepository.findAll();
 			mv.addObject("items", itemList);
-			
+
 			Users user = userList.get(0);
 			session.setAttribute("userInfo", user);
 
@@ -102,6 +102,70 @@ public class AccountController {
 			mv.setViewName("item");
 		}
 		return mv;
+	}
+
+	// マイページ表示
+	@RequestMapping("/mypage")
+	public ModelAndView mypage(ModelAndView mv) {
+
+		// セッションからユーザー情報の取得
+		mv.addObject("userInfo", session.getAttribute("userInfo"));
+		mv.setViewName("mypage");
+		return mv;
+	}
+
+	// 登録情報変更ページを表示
+	@RequestMapping("/editUser")
+	public ModelAndView editUser(ModelAndView mv) {
+
+		// セッションからユーザー情報の取得
+		mv.addObject("userInfo", session.getAttribute("userInfo"));
+		mv.setViewName("editUser");
+		return mv;
+	}
+
+	// 登録情報変更
+	@RequestMapping(value = "/editUser", method = RequestMethod.POST)
+	public ModelAndView itemAdd(@RequestParam("name") String name, @RequestParam("address") String address,
+			@RequestParam("tell") String tell, @RequestParam("email") String email,
+			@RequestParam("password") String password, ModelAndView mv) {
+		mv.setViewName("itemAdd");
+
+		// 未入力チェック
+		if (name == null || name.length() == 0 || address == null || address.length() == 0 || tell == null
+				|| tell.length() == 0 || email == null || email.length() == 0 || password == null
+				|| password.length() == 0) {
+			mv.addObject("message", "入力値が正しくありません");
+
+			// 更新画面を再表示
+			mv.addObject("userInfo", session.getAttribute("userInfo"));
+			mv.setViewName("editUser");
+		} else {
+
+			// セッションからid取得
+			Users userInfo = (Users) session.getAttribute("userInfo");
+			Integer id = userInfo.getId();
+			
+			// 登録の処理
+			Users users = new Users(id, address, email, tell, name, password);
+			usersRepository.saveAndFlush(users);
+
+			// セッション情報をリセットし、再取得する
+			session.invalidate();
+			List<Users> userList = usersRepository.findByEmailAndPassword(email, password);
+			Users user = userList.get(0);
+			session.setAttribute("userInfo", user);
+			mv.addObject("userInfo", session.getAttribute("userInfo"));
+			mv.setViewName("mypage");
+		}
+		return mv;
+	}
+
+	@RequestMapping("/logout")
+	public String logout() {
+
+		// ログアウト独特の処理も追記可能
+		return login();
 	}
 
 }

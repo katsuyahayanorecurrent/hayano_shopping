@@ -2,9 +2,12 @@ package com.example.demo.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,10 +20,25 @@ public class ItemController {
 	@Autowired
 	ItemsRepository itemsRepository;
 
-	@RequestMapping("/searchItem")
-	public ModelAndView searchItem(@RequestParam("search") String search, ModelAndView mv) {
+	@Autowired
+	HttpSession session;
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public ModelAndView search(ModelAndView mv, @RequestParam("searchWord") String searchWord) {
+		List<Items> itemList = itemsRepository.findAllByNameContaining(searchWord);
+		mv.addObject("items", itemList);
+		mv.setViewName("item");
+		return mv;
+	}
+
+	// 検索画面に遷移
+	@RequestMapping(value = "/items")
+	public ModelAndView search(ModelAndView mv) {
+
 		List<Items> itemList = itemsRepository.findAll();
 		mv.addObject("items", itemList);
+
+		mv.setViewName("item");
 		return mv;
 	}
 

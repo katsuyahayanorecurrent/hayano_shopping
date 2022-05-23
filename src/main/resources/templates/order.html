@@ -5,6 +5,9 @@
 <title>注文</title>
 </head>
 <body>
+	<a href="/logout">ログアウト</a>
+	<a href="/items"> 商品一覧 </a>
+
 	<table border="1">
 		<!-- タイトル -->
 		<tr>
@@ -30,24 +33,24 @@
 		</tr>
 	</table>
 
-		<table>
-			<tr>
-				<td>お名前</td>
-				<td th:text="${userInfo.name}"></td>
-			</tr>
-			<tr>
-				<td>お届け先</td>
-				<td th:text="${userInfo.address}"></td>
-			</tr>
-			<tr>
-				<td>電話番号</td>
-				<td th:text="${userInfo.tell}"></td>
-			</tr>
-			<tr>
-				<td>e-mail</td>
-				<td th:text="${userInfo.email}"></td>
-			</tr>
-		</table>
+	<table>
+		<tr>
+			<td>お名前</td>
+			<td th:text="${userInfo.name}"></td>
+		</tr>
+		<tr>
+			<td>お届け先</td>
+			<td th:text="${userInfo.address}"></td>
+		</tr>
+		<tr>
+			<td>電話番号</td>
+			<td th:text="${userInfo.tell}"></td>
+		</tr>
+		<tr>
+			<td>e-mail</td>
+			<td th:text="${userInfo.email}"></td>
+		</tr>
+	</table>
 
 	<form action="/ordered" method="post">
 		<input type="submit" value="購入">

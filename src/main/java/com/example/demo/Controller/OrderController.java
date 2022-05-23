@@ -36,17 +36,20 @@ public class OrderController {
 	@RequestMapping("/ordered")
 	public ModelAndView ordered(ModelAndView mv) {
 		Cart cart = getCartFromSession();
-		
+
 		// ページに表示したい情報を設定
 		mv.addObject("items", cart.getItems());
 		mv.addObject("total", cart.getTotal());
 		mv.addObject("userInfo", session.getAttribute("userInfo"));
-		
+
 		// カートの中身を表示するページに遷移
 		mv.setViewName("ordered");
+
+		// カート内のセッション情報を削除
+		session.removeAttribute("cart");
 		return mv;
 	}
-	
+
 	private Cart getCartFromSession() {
 		Cart cart = (Cart) session.getAttribute("cart");
 		if (cart == null) {
@@ -55,6 +58,5 @@ public class OrderController {
 		}
 		return cart;
 	}
-
 
 }

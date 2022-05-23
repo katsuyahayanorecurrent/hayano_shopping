@@ -49,6 +49,16 @@ public class Users {
 		this.password = password;
 	}
 
+	public Users(Integer id, String address, String email, String tell, String name, String password) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.email = email;
+		this.tell = tell;
+		this.name = name;
+		this.password = password;
+	}
+
 	public Users(String address, String email, String tell, String name, String password) {
 		super();
 		this.address = address;
@@ -62,6 +72,14 @@ public class Users {
 		super();
 		this.email = email;
 		this.password = password;
+	}
+
+	public Users(String address, String email, String tell, String name) {
+		super();
+		this.address = address;
+		this.email = email;
+		this.tell = tell;
+		this.name = name;
 	}
 
 	public Integer getId() {
