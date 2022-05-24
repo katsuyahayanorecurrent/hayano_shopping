@@ -18,13 +18,13 @@ public class Order {
 	private Integer id;
 	
 	@Column(name="user_id")
-	private Integer user_id;
+	private Integer userId;
 	
 	@Column(name="ordered_date")
-	private Date ordered_date;
+	private Date orderedDate;
 	
 	@Column(name="total_price")
-	private Integer total_price;
+	private Integer totalPrice;
 	
 	public Order() {
 		super();
@@ -32,25 +32,25 @@ public class Order {
 
 	public Order(Integer user_id, Date orderedDate, Integer totalPrice) {
 		super();
-		this.user_id = user_id;
-		this.ordered_date = orderedDate;
-		this.total_price = totalPrice;
+		this.userId = user_id;
+		this.orderedDate = orderedDate;
+		this.totalPrice = totalPrice;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public Integer getUser_id() {
-		return user_id;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public Date getOrdered_date() {
-		return ordered_date;
+	public Date getOrderedDate() {
+		return orderedDate;
 	}
 
-	public Integer getTotal_price() {
-		return total_price;
+	public Integer getTotalPrice() {
+		return totalPrice;
 	}
 
 

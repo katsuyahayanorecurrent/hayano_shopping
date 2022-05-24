@@ -10,4 +10,5 @@ import com.example.demo.Entity.Users;
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Integer> {
 	List<Users> findByEmailAndPassword(String email, String password);
+	List<Users> findByEmail(String email);
 }

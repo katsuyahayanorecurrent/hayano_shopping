@@ -16,18 +16,24 @@ public class OrderDetail {
 	private Integer id;
 	
 	@Column(name="ordered_id")
-	private Integer ordered_id;
+	private Integer orderedId;
 	
 	@Column(name="item_id")
-	private Integer item_id;
+	private Integer itemId;
 	
 	@Column(name="quantity")
 	private Integer quantity;
+	
+	
+
+	public OrderDetail() {
+		super();
+	}
 
 	public OrderDetail(Integer ordered_id, Integer item_id, Integer quantity) {
 		super();
-		this.ordered_id = ordered_id;
-		this.item_id = item_id;
+		this.orderedId = ordered_id;
+		this.itemId = item_id;
 		this.quantity = quantity;
 	}
 
@@ -35,12 +41,12 @@ public class OrderDetail {
 		return id;
 	}
 
-	public Integer getOrdered_id() {
-		return ordered_id;
+	public Integer getOrderedId() {
+		return orderedId;
 	}
 
-	public Integer getItem_id() {
-		return item_id;
+	public Integer getItemId() {
+		return itemId;
 	}
 
 	public Integer getQuantity() {

@@ -11,10 +11,9 @@
 
 	<table border="1">
 		<tr>
+			<td><img th:src="|/${items.image}|" /></td>
 			<th>商品名</th>
 			<td th:text="${items.name}" /></td>
-		</tr>
-		<tr>
 			<th>値段</th>
 			<td th:text="${items.price}" /></td>
 		</tr>

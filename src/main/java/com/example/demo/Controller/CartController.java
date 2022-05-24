@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.Entity.Cart;
+import com.example.demo.Classies.Cart;
 import com.example.demo.Entity.Items;
 import com.example.demo.Repository.ItemsRepository;
 

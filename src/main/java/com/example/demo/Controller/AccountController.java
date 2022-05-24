@@ -48,11 +48,19 @@ public class AccountController {
 			@RequestParam("address") String address, @RequestParam("tell") String tell,
 			@RequestParam("password") String password, ModelAndView mv) {
 
+		List<Users> userEmail = usersRepository.findByEmail(email);
 		// 未入力チェック
 		if (name == null || name.length() == 0 || email == null || email.length() == 0 || address == null
 				|| address.length() == 0 || tell == null || tell.length() == 0 || password == null
 				|| password.length() == 0) {
 			mv.addObject("message", "入力値が正しくありません");
+
+			// 登録画面を再表示
+			mv.setViewName("signup");
+		}
+		// 同じメールアドレスでの登録拒否
+		else if (userEmail.size() != 0) {
+			mv.addObject("message", "既に登録されています");
 
 			// 登録画面を再表示
 			mv.setViewName("signup");
@@ -144,7 +152,7 @@ public class AccountController {
 			// セッションからid取得
 			Users userInfo = (Users) session.getAttribute("userInfo");
 			Integer id = userInfo.getId();
-			
+
 			// 登録の処理
 			Users users = new Users(id, address, email, tell, name, password);
 			usersRepository.saveAndFlush(users);
@@ -159,7 +167,7 @@ public class AccountController {
 
 	@RequestMapping("/logout")
 	public String logout() {
-		
+
 		// ログアウト独特の処理も追記可能
 		return login();
 	}
