@@ -71,5 +71,21 @@ public class AdminController {
 			}
 			return mv;
 		}
+		
+		// 検索画面に遷移
+		@RequestMapping(value = "/adminItem")
+		public ModelAndView adminItems(ModelAndView mv) {
 
+			List<Items> itemList = itemsRepository.findAll();
+			mv.addObject("items", itemList);
+
+			mv.setViewName("adminItem");
+			return mv;
+		}
+
+		//出品画面に遷移
+		@RequestMapping("/addItem")
+		public String addItem() {
+			return ("addItem");
+		}
 }

@@ -2,6 +2,8 @@ package com.example.demo.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -10,6 +12,7 @@ import javax.persistence.Transient;
 @Table(name = "items")
 public class Items {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
@@ -42,6 +45,14 @@ public class Items {
 		this.name = name;
 		this.delivery_days = delivery_days;
 		this.quantity = quantity;
+	}
+
+	public Items(Integer price, Integer stock, String image, String name) {
+		super();
+		this.price = price;
+		this.stock = stock;
+		this.image = image;
+		this.name = name;
 	}
 
 	@Transient

@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/main.css}">
 <title>購入履歴</title>
 </head>
 <body>
@@ -9,30 +10,30 @@
 	<a href="/cart"> カートを見る </a>
 	<a href="/mypage">マイページ</a>
 
-	<table border="1">
+		<!-- 注文情報を表示するための見出し -->
+	<table border="1" class="ml-30 orderHistory">
 		<tr>
-			<th>注文日</th>
-			<th>商品</th>
-			<th>小計</th>
+			<th class="pl-15 pr-15  pt-15">注文日</th>
+			<th class="pl-15 pr-15 pt-15">商品</th>
+			<th class="pl-15 pr-15  pt-15">小計</th>
 		</tr>
 
 		<tr th:each="orderHistory : ${orderHistories}">
 			<!-- オーダー情報の表示  -->
-			<td th:text="${orderHistory.order.orderedDate}"></td>
-			
-			<td>
+			<td
+				th:text="${#dates.format(orderHistory.order.orderedDate, 'yyyy-MM-dd')}"
+				class="pl-15 pr-15 pb-15 pt-15"></td>
+
+			<td class="pl-15 pr-15 pb-15 pt-15">
 				<ul th:each="orderDetailHistory : ${orderHistory.orderDetails}">
-					<!-- <li th:text="${orderDetailHistory.orderDetail.id}"></li> -->
-					<li th:if="orderDetailHistory.item != null" th:text="${orderDetailHistory.item.name}"></li>
+					<li th:if="orderDetailHistory.item != null"
+						th:text="${orderDetailHistory.item.name}"></li>
 				</ul>
 			</td>
-			<td th:text="${orderHistory.order.totalPrice}"></td>
-		
-		<!-- <td th:text="${ordered.id}"></td>
-			<td th:text="${ordered.ordered_date}"></td>
-			<td th:text="${#dates.format(ordered, 'yyyy-MM-dd')"></td>
-			<td th:text="${ordered.total_price}"></td> -->
+			<td th:text="${orderHistory.order.totalPrice}"
+				class="pl-15 pr-15 pb-15 pt-15"></td>
 		</tr>
 	</table>
+
 </body>
 </html>

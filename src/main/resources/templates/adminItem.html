@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>出品商品一覧</title>
+</head>
+<body>
+	<a href="/logout">ログアウト</a>
+	<a href="/adminMypage">マイページ</a>
+	<a href="/addItem">出品</a>
+	<form action="/search" method="post">
+		<input type="text" name="searchWord"> <input type="submit"
+			value="検索" />
+	</form>
+
+	<table>
+		<tr th:each="items:${items}">
+			<td><img th:src="|/${items.image}|" /></td>
+			<td th:text="${items.name}"></td>
+			<td th:text="${items.price}"></td>
+			<td><a th:href="|/${items.id}/delete|">
+					<button>削除</button>
+			</a></td>
+		</tr>
+	</table>
+</body>
+</html>

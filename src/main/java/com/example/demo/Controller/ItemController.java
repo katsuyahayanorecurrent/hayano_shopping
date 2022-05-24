@@ -51,4 +51,42 @@ public class ItemController {
 		return mv;
 	}
 
+	// 出品処理
+	@RequestMapping(value = "/addItem/do", method = RequestMethod.POST)
+	public ModelAndView addItem(@RequestParam("name") String name,
+			@RequestParam(name = "price", defaultValue = "0") int price, @RequestParam("image") String image,
+			@RequestParam(name = "stock", defaultValue = "0") int stock, ModelAndView mv) {
+		// 未入力チェック
+		if (name == null || name.length() == 0 || image == null || image.length() == 0 || price < 0 || stock < 0) {
+			mv.addObject("message", "入力値が正しくありません");
+
+			// 出品画面を再表示
+			mv.setViewName("addItem");
+		} else {
+			// 登録の処理
+			Items item = new Items(price, stock, image, name);
+			itemsRepository.saveAndFlush(item);
+
+			// アイテム・カテゴリ一覧を取得して表示
+			mv.addObject("items", itemsRepository.findAll());
+			mv.setViewName("adminItem");
+		}
+		return mv;
+	}
+
+	// 商品削除
+	@RequestMapping("/{id}/delete")
+	public ModelAndView itemDelete(@PathVariable("id") int id, ModelAndView mv) {
+
+		// データを削除する
+		itemsRepository.deleteById(id);
+
+		// 削除を確定する
+		itemsRepository.flush();
+
+		// アイテム・カテゴリ一覧を取得して表示
+		mv.addObject("items", itemsRepository.findAll());
+		mv.setViewName("adminItem");
+		return mv;
+	}
 }
