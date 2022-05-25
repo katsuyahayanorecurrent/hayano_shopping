@@ -2,24 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/main.css}">
 <title>ログイン</title>
 </head>
 <body>
-	<h1>ログイン</h1>
+	<div id="form">
+		<p class="form-title">ログイン</p>
 
-	<!-- エラーメッセージ -->
-	<span th:text="${message}" style="color: red;"></span>
+		<!-- エラーメッセージ -->
+		<span th:text="${message}" style="color: red;"></span>
 
-	<!-- ログインフォーム -->
-	<form action="/login" method="post">
+		<!-- ログインフォーム -->
+		<form action="/login" method="post">
 
-		<input type="text" name="email" placeholder="メールアドレス" /> <br> <input
-			type="text" name="password" placeholder="パスワード" /> <br> <input
-			type="submit" value="ログイン" />
-	</form>
-
-	<a href="/signup">新規登録</a>
-	<a href="/adminLogin">管理者</a>
+			<p>Email</p>
+			<p class="mail">
+				<input type="text" name="email" />
+			</p>
+			<p>Password</p>
+			<p class="pass">
+				<input type="password" name="password" />
+			</p>
+			<p class="submit">
+				<input type="submit" value="ログイン" />
+			</p>
+		</form>
+		<a href="/signup">新規登録</a> <a href="/adminLogin">管理者</a>
+	</div>
 
 </body>
 </html>

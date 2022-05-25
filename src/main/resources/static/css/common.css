@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+body {
+	position: relative;
+	overflow-x: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	background-color: white;
+	padding: 5px 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+button:hover {
+	opacity: 0.7;
+	cursor: pointer;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#top-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	font-family: "Kosugi", sans-serif;
+	font-size: 40px;
+	/* 背景色: カラーコードで検索 */
+	background-color: #f9f9f9;
+	/* 下線 */
+	border-bottom: 1px solid #aaa;
+	/* 内部に取る余白 */
+	padding: 10px;
+	z-index: 99;
+}
+
+#top-menu a {
+	text-decoration: none;
+	color: #915da3;
+}
+
+#content-body {
+	display: block;
+	position: initial;
+	/* 表示開始位置調整用 */
+	padding-top: 50px;
+}
+
+.itemview-1 {
+	border-collapse: collapse;
+	border-spacing: 5px;
+	width: 90%;
+	margin: auto;
+}
+
+.itemview-1 tr {
+	/* 背景色: カラーコードで検索 */
+	border: 1px solid #ccc;
+}
+
+.itemview-1 td:first-child {
+	width: 150px;
+}
+
+.itemview-1 td:first-child>img {
+	width: 150px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+}
+
+.itemview-1 td:not(:first-child) {
+	text-align: left;
+	vertical-align: top;
+	position: relative;
+}
+
+.itemview-1 td:not(:first-child)>* {
+	margin: 0;
+	padding: 5px;
+}
+
+.itemview-1 .buttons {
+	position: absolute;
+	display: inline-block;
+	right: 0;
+	bottom: 0;
+}
+
+.itemview-2 {
+	width: 90%;
+	margin: auto;
+	clear: both;
+	border: 20px solid #ccc;
+}
+
+.itemview-2:after {
+    visibility: hidden;
+    display: block;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+
+.itemview-2>div {
+	width: 23%;
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	height: 500px;
+	position: relative;
+	font-family: "Kosugi", sans-serif;
+}
+
+.itemview-2 imgdiv {
+	height: 50px;
+	width: 50px;
+}
+
+.itemview-2 div p {
+	padding: 0px 10px;
+	white-space: nowrap;
+}
+
+.itemview-2 .buttons {
+	text-align: center;
+	position: absolute;
+	bottom: 5px;
+	display: block;
+	width: 100%;
+}
+
+.itemview-2 .buttons a {
+	display: inline-block;
+}
+
+.search_container {
+	position: relative;
+	box-sizing: border-box;
+}
+
+.search_container input[type="text"] {
+	border: none;
+	height: 1.8em;
+}
+
+.search_container input[type="text"]:focus {
+	outline: 0;
+}
+
+.search_container {
+	border: 2px solid #d3d6dd;
+	padding: 3px 5px;
+	border-radius: 20px;
+	height: 2.2em;
+	width: 265px;
+	overflow: hidden;
+}
+
+.search_container input[type="submit"] {
+	cursor: pointer;
+	font-family: FontAwesome;
+	border: none;
+	background: #eae8e1;
+	color: #24140e;
+	position: absolute;
+	width: 3.5em;
+	height: 3.0em;
+	right: 0px;
+	top: -5px;
+	outline: none;
+}
+
+.search_container ::-webkit-input-placeholder {
+	color: #fff;
+}
+

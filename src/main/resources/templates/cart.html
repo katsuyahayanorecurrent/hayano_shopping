@@ -2,20 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Kosugi"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/main.css}">
 <title>カート</title>
 </head>
 <body>
-	<a href="/logout">ログアウト</a>
-	<a href="/items"> 商品一覧 </a>
+	<span th:replace="topMenu"></span>
 
-	<table border="1">
+	<hr>
+	<hr>
+	<hr>
+	<hr>
+	<hr>
+	<hr>
+	<table class="ml-30 orderHistory kodai-table">
 		<!-- タイトル -->
 		<tr>
 			<th>商品名</th>
 			<th>値段</th>
 			<th>個数</th>
 			<th>小計</th>
-			<th></th>
 		</tr>
 
 		<!-- アイテムの一覧 -->
@@ -31,11 +39,18 @@
 		<tr>
 			<td colspan="5" align="right" th:text="|総計:${total}|"></td>
 		</tr>
+
 	</table>
 
-	<a href="/order">
-		<button>購入確認</button>
-	</a>
+	<div style="text-align: center;">
+		<a href="/order">
+			<button>購入確認</button>
+		</a>
+	</div>
+	
+	<footer>
+		<p>&copy;hayanoshopping</p>
+	</footer>
 
 </body>
 </html>

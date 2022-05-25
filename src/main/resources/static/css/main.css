@@ -1,44 +1,251 @@
 @charset "UTF-8";
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.cat {
+	height: 250px;
+	width: 250px;
+}
+
+ul {
+	list-style: none;
+}
+
+body {
+	background-color: #efefef;
+}
+
 /*Margin
 =====================================*/
+.mt-15 {
+	margin-top: 15px;
+}
 
-.mt-15 {margin-top: 15px;}
-.mt-30 {margin-top: 30px;}
-.mt-45 {margin-top: 45px;}
+.mt-30 {
+	margin-top: 30px;
+}
 
-.mr-15 {margin-right: 15px;}
-.mr-30 {margin-right: 30px;}
-.mr-45 {margin-right: 45px;}
+.mt-45 {
+	margin-top: 45px;
+}
 
-.mb-15 {margin-bottom: 15px;}
-.mb-30 {margin-bottom: 30px;}
-.mb-45 {margin-bottom: 45px;}
+.mr-15 {
+	margin-right: 15px;
+}
 
-.ml-15 {margin-left: 15px;}
-.ml-30 {margin-left: 30px;}
-.ml-45 {margin-left: 45px;}
+.mr-30 {
+	margin-right: 30px;
+}
+
+.mr-45 {
+	margin-right: 45px;
+}
+
+.mb-15 {
+	margin-bottom: 15px;
+}
+
+.mb-30 {
+	margin-bottom: 30px;
+}
+
+.mb-45 {
+	margin-bottom: 45px;
+}
+
+.ml-15 {
+	margin-left: 15px;
+}
+
+.ml-30 {
+	margin-left: 30px;
+}
+
+.ml-45 {
+	margin-left: 45px;
+}
 
 /*Padding
 =====================================*/
+.pt-15 {
+	padding-top: 15px;
+}
 
-.pt-15 {padding-top: 15px;}
-.pt-30 {padding-top: 30px;}
-.pt-45 {padding-top: 45px;}
+.pt-30 {
+	padding-top: 30px;
+}
 
-.pr-15 {padding-right: 15px;}
-.pr-30 {padding-right: 30px;}
-.pr-45 {padding-right: 45px;}
+.pt-45 {
+	padding-top: 45px;
+}
 
-.pb-15 {padding-bottom: 15px;}
-.pb-30 {padding-bottom: 30px;}
-.pb-45 {padding-bottom: 45px;}
+.pr-15 {
+	padding-right: 15px;
+}
 
-.pl-15 {padding-left: 15px;}
-.pl-30 {padding-left: 30px;}
-.pl-45 {padding-left: 45px;}
+.pr-30 {
+	padding-right: 30px;
+}
+
+.pr-45 {
+	padding-right: 45px;
+}
+
+.pb-15 {
+	padding-bottom: 15px;
+}
+
+.pb-30 {
+	padding-bottom: 30px;
+}
+
+.pb-45 {
+	padding-bottom: 45px;
+}
+
+.pl-15 {
+	padding-left: 15px;
+}
+
+.pl-30 {
+	padding-left: 30px;
+}
+
+.pl-45 {
+	padding-left: 45px;
+}
 
 /*ulに最初からついているmarginとpaddingを消す*/
-.orderHistory ul{
+.orderHistory ul {
 	padding: 0;
 	margin: 0;
+}
+
+/* layout */
+body, p, form, input {
+	margin: 0;
+}
+
+#form {
+	width: 400px;
+	margin: 30px auto;
+	padding: 20px;
+	border: 1px solid #555;
+}
+
+form p {
+	font-size: 14px;
+}
+
+.form-title {
+	text-align: center;
+}
+
+.mail, .pass {
+	margin-bottom: 20px;
+}
+
+input[type="email"], input[type="password"] {
+	width: 300px;
+	padding: 4px;
+	font-size: 14px;
+}
+
+.submit {
+	text-align: right;
+} /* font */
+#form p {
+	color: #077685;
+	font-weight: bold;
+}
+
+#form .form-title {
+	font-family: Arial;
+	font-size: 30px;
+	color: #4eb4c2;
+} /* skin */
+#form {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0px 1px 10px #488a9e;
+	-moz-box-shadow: 0px 1px 10px #488a9e;
+	box-shadow: 0px 1px 10px #488a9e;
+	border: solid #4eb4c2 1px;
+	background: #fafafa;
+}
+
+#form .form-title {
+	padding-bottom: 6px;
+	border-bottom: 2px solid #4eb4c2;
+	margin-bottom: 20px;
+}
+
+.submit input {
+	background: #a83b98;
+	background-image: -webkit-linear-gradient(top, #a83b98, #2980b9);
+	background-image: -moz-linear-gradient(top, #a83b98, #2980b9);
+	background-image: -ms-linear-gradient(top, #a83b98, #2980b9);
+	background-image: -o-linear-gradient(top, #a83b98, #2980b9);
+	background-image: linear-gradient(to bottom, #a83b98, #2980b9);
+	-webkit-border-radius: 42;
+	-moz-border-radius: 42;
+	border-radius: 42px;
+	text-shadow: 18px 18px 6px #3b153b;
+	font-family: Georgia;
+	color: #ddf2d5;
+	font-size: 15px;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+}
+
+/***　古代カラー　***/
+.kodai-table {
+	table-layout: fixed;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ヘッダー */
+.kodai-table thead th {
+	background: #b4aeb1;
+	font-weight: bold;
+	color: #b4aeb1;
+}
+
+/* ボディ項目・フッター項目 */
+.kodai-table tbody th, .kodai-table tfoot th {
+	background: #bbdbf3;
+	border: 5px solid rgba(204, 227, 219, 1);
+	border-radius: 36px;
+}
+
+/* ボディデータ・フッターデータ */
+.kodai-table tbody td, .kodai-table tfoot td {
+	text-align: center;
+	border: 1px ridge #c0c0c0;
+}
+
+.element {
+	border: 15px groove rgba(212, 169, 169, 1);
+	border-radius: 25px;
+	background-color: rgba(209, 155, 155, 0.5);
+	color: rgba(87, 31, 31, 0.63);
+	animation: cssAnimation_0 300ms 1 ease-in;
+	backdrop-filter: blur(undefined);
+	-webkit-backdrop-filter: blur(undefined);
+}
+
+footer {
+	/*フッターの背景色を指定*/
+	background-color: black;
+	/*中央揃えにする*/
+	text-align: center;
+	/*文字色を白にする*/
+	color: #FFFFFF;
+	/*上下に余白をつけてフッターの太さを調整する*/
+	padding: 15px 0;
 }
