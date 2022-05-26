@@ -2,23 +2,45 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Kosugi"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/main.css}">
 <title>新規登録</title>
 </head>
 <body>
 	<h1>新規登録</h1>
-	
+
 	<!-- エラーメッセージ -->
 	<span th:text="${message}" style="color: red;"></span>
 
 	<!-- 登録フォーム -->
 	<form action="/signup" method="post">
-
-		<input type="text" name="name" placeholder="名前" /> <br> <input
-			type="text" name="email" placeholder="メールアドレス" /> <br> <input
-			type="text" name="tell" placeholder="電話番号" /> <br> <input
-			type="text" name="address" placeholder="住所" /> <br> <input
-			type="text" name="password" placeholder="パスワード" /> <br> <input
-			type="submit" value="登録" />
+		<table>
+			<tr>
+				<th>お名前</th>
+				<td><input type="text" name="name" /></td>
+			</tr>
+			<tr>
+				<th>お届け先</th>
+				<td><input type="text" name="address" /></td>
+			</tr>
+			<tr>
+				<th>電話番号</th>
+				<td><input type="text" name="tell" /></td>
+			</tr>
+			<tr>
+				<th>e-mail</th>
+				<td><input type="text" name="email" /></td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td><input type="text" name="password" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="登録" class="original-button" /></td>
+			</tr>
+		</table>
 	</form>
 
 </body>

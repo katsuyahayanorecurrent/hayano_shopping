@@ -100,19 +100,19 @@ img {
 }
 
 .itemview-2:after {
-    visibility: hidden;
-    display: block;
-    content: " ";
-    clear: both;
-    height: 0;
-  }
+	visibility: hidden;
+	display: block;
+	content: " ";
+	clear: both;
+	height: 0;
+}
 
 .itemview-2>div {
 	width: 23%;
 	float: left;
 	margin: 5px;
 	padding: 5px;
-	height: 500px;
+	height: 400px;
 	position: relative;
 	font-family: "Kosugi", sans-serif;
 }
@@ -164,7 +164,7 @@ img {
 
 .search_container input[type="submit"] {
 	cursor: pointer;
-	font-family: FontAwesome;
+	font-family: "Kosugi", sans-serif;
 	border: none;
 	background: #eae8e1;
 	color: #24140e;
@@ -180,3 +180,12 @@ img {
 	color: #fff;
 }
 
+h1 {
+	position: relative;
+	padding: 1rem 2rem calc(1rem + 8px);
+	text-shadow: #fff 2px 0, #fff -2px 0, #fff 0 -2px, #fff 0 2px, #fff 2px
+		2px, #fff -2px 2px, #fff 2px -2px, #fff -2px -2px, #fff 1px 2px, #fff
+		-1px 2px, #fff 1px -2px, #fff -1px -2px, #fff 2px 1px, #fff -2px 1px,
+		#fff 2px -1px, #fff -2px -1px;
+	text-align: center;
+}

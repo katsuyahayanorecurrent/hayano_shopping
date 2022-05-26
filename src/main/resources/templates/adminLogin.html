@@ -2,20 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Kosugi"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/main.css}">
 <title>管理者ログイン</title>
 </head>
 <body>
-	<h1>管理者ログイン</h1>
+	<div id="form">
+		<p class="form-title">管理者ログイン</p>
 
-	<!-- エラーメッセージ -->
-	<span th:text="${message}" style="color: red;"></span>
+		<!-- エラーメッセージ -->
+		<span th:text="${message}" style="color: red;"></span>
 
-	<!-- ログインフォーム -->
-	<form action="/adminLogin" method="post">
+		<!-- ログインフォーム -->
+		<form action="/adminLogin" method="post">
 
-		<input type="text" name="email" placeholder="メールアドレス" /> <br> <input
-			type="text" name="password" placeholder="パスワード" /> <br> <input
-			type="submit" value="ログイン" />
-	</form>
+			<p>Email</p>
+			<p class="mail">
+				<input type="text" name="email" />
+			</p>
+			<p>Password</p>
+			<p class="pass">
+				<input type="password" name="password" />
+			</p>
+			<p class="submit">
+				<input type="submit" value="ログイン" />
+			</p>
+		</form>
+	</div>
 </body>
 </html>

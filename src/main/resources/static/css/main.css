@@ -16,6 +16,7 @@ ul {
 
 body {
 	background-color: #efefef;
+	font-family: "Kosugi", sans-serif;
 }
 
 /*Margin
@@ -163,7 +164,7 @@ input[type="email"], input[type="password"] {
 }
 
 #form .form-title {
-	font-family: Arial;
+	font-family: "Kosugi", sans-serif;
 	font-size: 30px;
 	color: #4eb4c2;
 } /* skin */
@@ -195,7 +196,7 @@ input[type="email"], input[type="password"] {
 	-moz-border-radius: 42;
 	border-radius: 42px;
 	text-shadow: 18px 18px 6px #3b153b;
-	font-family: Georgia;
+	font-family: "Kosugi", sans-serif;
 	color: #ddf2d5;
 	font-size: 15px;
 	padding: 10px 20px 10px 20px;
@@ -229,14 +230,19 @@ input[type="email"], input[type="password"] {
 	border: 1px ridge #c0c0c0;
 }
 
-.element {
-	border: 15px groove rgba(212, 169, 169, 1);
-	border-radius: 25px;
-	background-color: rgba(209, 155, 155, 0.5);
-	color: rgba(87, 31, 31, 0.63);
-	animation: cssAnimation_0 300ms 1 ease-in;
-	backdrop-filter: blur(undefined);
-	-webkit-backdrop-filter: blur(undefined);
+table {
+	border-collapse: collapse; /* セルの線を重ねる */
+	font-family: "Kosugi", sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+tr:nth-child(odd) {
+	background-color: #ddd; /* 背景色指定 */
+}
+
+th, td {
+	padding: 5px 10px; /* 余白指定 */
 }
 
 footer {
@@ -248,4 +254,31 @@ footer {
 	color: #FFFFFF;
 	/*上下に余白をつけてフッターの太さを調整する*/
 	padding: 15px 0;
+}
+
+.original-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	text-decoration: none;
+	color: #826e6e;
+	font-size: 16px;
+	border-radius: 50px;
+	width: 120px;
+	height: 50px;
+	font-weight: bold;
+	border: 1px solid #333333;
+	transition: 0.3s;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+	text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.8);
+	background-image: linear-gradient(173deg, rgba(237, 237, 237, 1) 20%,
+		rgba(158, 219, 227, 1) 66%, rgba(190, 220, 210, 1));
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.original-button:hover {
+	transform: translateY(2px);
+	box-shadow: 0 0 rgba(0, 0, 0, 0);
 }

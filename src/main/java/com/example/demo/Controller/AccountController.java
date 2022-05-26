@@ -135,12 +135,12 @@ public class AccountController {
 	// 登録情報変更
 	@RequestMapping(value = "/editUser", method = RequestMethod.POST)
 	public ModelAndView itemAdd(@RequestParam("name") String name, @RequestParam("address") String address,
-			@RequestParam("tell") String tell, @RequestParam("email") String email,
+			@RequestParam("tell") String tell,
 			@RequestParam("password") String password, ModelAndView mv) {
 
 		// 未入力チェック
 		if (name == null || name.length() == 0 || address == null || address.length() == 0 || tell == null
-				|| tell.length() == 0 || email == null || email.length() == 0 || password == null
+				|| tell.length() == 0 || password == null
 				|| password.length() == 0) {
 			mv.addObject("message", "入力値が正しくありません");
 
@@ -154,7 +154,7 @@ public class AccountController {
 			Integer id = userInfo.getId();
 
 			// 登録の処理
-			Users users = new Users(id, address, email, tell, name, password);
+			Users users = new Users(id, address, tell, name, password);
 			usersRepository.saveAndFlush(users);
 
 			// セッション情報を再取得する

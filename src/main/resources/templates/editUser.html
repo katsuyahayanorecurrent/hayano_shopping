@@ -2,9 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Kosugi"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/main.css}">
 <title>登録情報の変更</title>
 </head>
 <body>
+	<span th:replace="topMenu"></span>
+	<br>
+	<br>
+	<br>
 	<h1>登録情報更新</h1>
 
 	<!-- エラーメッセージ -->
@@ -27,8 +35,7 @@
 			</tr>
 			<tr>
 				<th>e-mail</th>
-				<td><input type="text" name="email"
-					th:value="${userInfo.email}" /></td>
+				<td th:text="${userInfo.email}"></td>
 			</tr>
 			<tr>
 				<th>パスワード</th>
@@ -36,8 +43,12 @@
 					th:value="${userInfo.password}" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="更新">
+		<input class="original-button" type="submit" value="更新">
 	</form>
+
+	<footer>
+		<p>&copy;HayanoShopping</p>
+	</footer>
 
 </body>
 </html>

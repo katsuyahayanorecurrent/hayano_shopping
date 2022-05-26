@@ -82,6 +82,15 @@ public class Users {
 		this.name = name;
 	}
 
+	public Users(Integer id, String address, String tell, String name, String password) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.tell = tell;
+		this.name = name;
+		this.password = password;
+	}
+
 	public Integer getId() {
 		return id;
 	}
