@@ -30,20 +30,20 @@
 		<!-- アイテムの一覧 -->
 		<tr th:each="items:${items}">
 			<td th:text="${items.value.name}"></td>
-			<td th:text="${items.value.price}"></td>
+			<td th:text="${items.value.price} + 円"></td>
 			<td th:text="${items.value.quantity}"></td>
-			<td th:text="${items.value.price * items.value.quantity}"></td>
+			<td th:text="${items.value.price * items.value.quantity} + 円"></td>
 			<td><a th:href="|/cart/delete/${items.value.id}|"><button>削除</button></a></td>
 		</tr>
 
 		<!-- 総計 -->
 		<tr>
-			<td colspan="5" align="right" th:text="|総計:${total}|"></td>
+			<td colspan="5" align="right" th:text="|総計:${total}| + 円"></td>
 		</tr>
 
 	</table>
 
-	<div style="text-align: center;">
+	<div th:if="${total != 0}" style="text-align: center;">
 		<a href="/order" class="original-button"> 購入確認 </a>
 	</div>
 

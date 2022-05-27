@@ -24,11 +24,21 @@ public class ItemController {
 	@Autowired
 	HttpSession session;
 
+	// 検索処理
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ModelAndView search(ModelAndView mv, @RequestParam("searchWord") String searchWord) {
 		List<Items> itemList = itemsRepository.findAllByNameContaining(searchWord);
 		mv.addObject("items", itemList);
 		mv.setViewName("item");
+		return mv;
+	}
+
+	// 管理者用検索
+	@RequestMapping(value = "/searchAdmin", method = RequestMethod.POST)
+	public ModelAndView searchAdmin(ModelAndView mv, @RequestParam("searchWord") String searchWord) {
+		List<Items> itemList = itemsRepository.findAllByNameContaining(searchWord);
+		mv.addObject("items", itemList);
+		mv.setViewName("adminItem");
 		return mv;
 	}
 
@@ -57,7 +67,7 @@ public class ItemController {
 			@RequestParam(name = "price", defaultValue = "0") int price, @RequestParam("image") String image,
 			@RequestParam(name = "stock", defaultValue = "0") int stock, ModelAndView mv) {
 		// 未入力チェック
-		if (name == null || name.length() == 0 || image == null || image.length() == 0 || price < 0 || stock < 0) {
+		if (name == null || name.length() == 0 || image == null || image.length() == 0 || price <= 0 || stock <= 0) {
 			mv.addObject("message", "入力値が正しくありません");
 
 			// 出品画面を再表示

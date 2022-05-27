@@ -73,6 +73,26 @@ public class CartController {
 		return mv;
 	}
 	
+	@RequestMapping("/order/delete/{id}")
+	public ModelAndView deleteCart2(@PathVariable("id") int id, ModelAndView mv) {
+
+		// カート情報を取得
+		Cart cart = getCart();
+
+		// カートの中からcodeが一致する情報を削除
+		cart.deleteCart(id);
+
+		// ページに表示したい情報を設定
+		mv.addObject("items", cart.getItems());
+		mv.addObject("total", cart.getTotal());
+		mv.addObject("userInfo", session.getAttribute("userInfo"));
+
+		// 注文ページに遷移
+		mv.setViewName("order");
+
+		return mv;
+	}
+	
 	public Cart getCart() {
 		// セッションのカート情報を取得
 		Cart cart = (Cart) session.getAttribute("cart");

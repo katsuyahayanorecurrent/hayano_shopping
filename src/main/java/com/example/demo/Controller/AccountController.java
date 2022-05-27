@@ -53,7 +53,7 @@ public class AccountController {
 		if (name == null || name.length() == 0 || email == null || email.length() == 0 || address == null
 				|| address.length() == 0 || tell == null || tell.length() == 0 || password == null
 				|| password.length() == 0) {
-			mv.addObject("message", "入力値が正しくありません");
+			mv.addObject("message", "未入力の項目があります");
 
 			// 登録画面を再表示
 			mv.setViewName("signup");
@@ -82,7 +82,7 @@ public class AccountController {
 
 		// 未入力チェック
 		if (email == null || email.length() == 0 || password == null || password.length() == 0) {
-			mv.addObject("message", "入力値が正しくありません");
+			mv.addObject("message", "未入力の項目があります");
 
 			// 登録画面を再表示
 			mv.setViewName("login");
@@ -134,7 +134,7 @@ public class AccountController {
 
 	// 登録情報変更
 	@RequestMapping(value = "/editUser", method = RequestMethod.POST)
-	public ModelAndView itemAdd(@RequestParam("name") String name, @RequestParam("address") String address,
+	public ModelAndView editUser(@RequestParam("name") String name, @RequestParam("address") String address,
 			@RequestParam("tell") String tell,
 			@RequestParam("password") String password, ModelAndView mv) {
 
@@ -142,7 +142,7 @@ public class AccountController {
 		if (name == null || name.length() == 0 || address == null || address.length() == 0 || tell == null
 				|| tell.length() == 0 || password == null
 				|| password.length() == 0) {
-			mv.addObject("message", "入力値が正しくありません");
+			mv.addObject("message", "未入力の項目があります");
 
 			// 更新画面を再表示
 			mv.addObject("userInfo", session.getAttribute("userInfo"));
@@ -154,7 +154,7 @@ public class AccountController {
 			Integer id = userInfo.getId();
 
 			// 登録の処理
-			Users users = new Users(id, address, tell, name, password);
+			Users users = new Users(id, address,userInfo.getEmail(), tell,  name, password);
 			usersRepository.saveAndFlush(users);
 
 			// セッション情報を再取得する

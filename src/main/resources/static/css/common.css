@@ -42,7 +42,7 @@ img {
 
 #top-menu a {
 	text-decoration: none;
-	color: #915da3;
+	color: #f6ad49;
 }
 
 #content-body {
@@ -106,7 +106,6 @@ img {
 	clear: both;
 	height: 0;
 }
-
 .itemview-2>div {
 	width: 23%;
 	float: left;
@@ -115,7 +114,13 @@ img {
 	height: 400px;
 	position: relative;
 	font-family: "Kosugi", sans-serif;
+	transform: all 0.4s ease;
 }
+.itemview-2>div:hover{
+	opacity: 0.9;
+	background-color: #c4b8fc;
+}
+
 
 .itemview-2 imgdiv {
 	height: 50px;
